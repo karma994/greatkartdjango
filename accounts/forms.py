@@ -10,7 +10,8 @@ class RegistrationForm(forms.ModelForm):
         
     }))
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'placeholder': 'Confirm Password'
+        'placeholder': 'Confirm Password',
+        
     }))
 
     class Meta:
@@ -18,7 +19,7 @@ class RegistrationForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'phone_number', 'email', 'password']
 
     def __init__(self, *args, **kwargs):
-        super(RegistrationForm, self).__init__(args, **kwargs)   
+        super(RegistrationForm, self).__init__(*args, **kwargs)   
         self.fields['first_name'].widget.attrs['placeholder'] = 'Enter First Name' 
         self.fields['last_name'].widget.attrs['placeholder'] = 'Enter Last Name'
         self.fields['phone_number'].widget.attrs['placeholder'] = 'Enter Phone Number'
